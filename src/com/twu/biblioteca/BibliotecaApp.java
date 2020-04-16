@@ -12,14 +12,18 @@ public class BibliotecaApp {
     private static Library library = new Library(books);
 
     private static Option option1 = new Option("List of books");
-    private static ArrayList<Option> optionsList = new ArrayList<Option>(Arrays.asList(option1));
+    private static Option option2 = new Option("Quit");
+    private static ArrayList<Option> optionsList = new ArrayList<Option>(Arrays.asList(option1, option2));
     private static Menu menu = new Menu(optionsList);
+
+    public static boolean quitApplication = false;
 
     public static void main(String[] args) {
         sayWelcome();
-        menu.handleSelection();
-        menu.applySelection();
-//        library.displayBooks();
+        while (!quitApplication) {
+            menu.handleSelection();
+            menu.applySelection();
+        }
     }
 
     public static void sayWelcome() {

@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Menu {
     private ArrayList<Option> optionsList;
     private String selectedOption;
-    private static Option optionToApply;
+    private Option optionToApply;
 
     public Menu(ArrayList<Option> optionsList){
         this.optionsList = optionsList;
@@ -34,6 +34,7 @@ public class Menu {
         }
         if(optionToApply != null){
             optionToApply.applyOption();
+            optionToApply = null;
         } else {
             System.out.println("Please select a valid option");
         }
