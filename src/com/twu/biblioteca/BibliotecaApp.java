@@ -17,8 +17,9 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         sayWelcome();
-        menu.showOptions();
-        library.displayBooks();
+        menu.handleSelection();
+        menu.applySelection();
+//        library.displayBooks();
     }
 
     public static void sayWelcome() {
