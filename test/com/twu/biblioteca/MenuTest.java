@@ -30,7 +30,7 @@ public class MenuTest {
 
     @Test
     public void menuShowOptions(){
-        Option[] optionsList = {option1};
+        ArrayList<Option> optionsList = new ArrayList<Option>(Arrays.asList(option1));
         menu = new Menu(optionsList);
         String optionMessage = "List of books\n";
         menu.showOptions();

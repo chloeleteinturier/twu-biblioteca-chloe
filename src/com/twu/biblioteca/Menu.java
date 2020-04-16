@@ -1,9 +1,11 @@
 package com.twu.biblioteca;
 
-public class Menu {
-    private Option[] optionsList;
+import java.util.ArrayList;
 
-    public Menu(Option[] optionsList){
+public class Menu {
+    private ArrayList<Option> optionsList;
+
+    public Menu(ArrayList<Option> optionsList){
         this.optionsList = optionsList;
     }
 

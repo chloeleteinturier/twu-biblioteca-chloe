@@ -12,7 +12,7 @@ public class BibliotecaApp {
     private static Library library = new Library(books);
 
     private static Option option1 = new Option("List of books");
-    private static Option[] optionsList = {option1};
+    private static ArrayList<Option> optionsList = new ArrayList<Option>(Arrays.asList(option1));
     private static Menu menu = new Menu(optionsList);
 
     public static void main(String[] args) {
