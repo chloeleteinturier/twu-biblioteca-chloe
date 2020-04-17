@@ -35,7 +35,7 @@ public class BookTest {
     }
 
     @Test
-    public void testBooktoggleIsAvailable() {
+    public void testBookToggleIsAvailable() {
         book1.toggleIsAvailable();
         assertEquals(false, book1.getIsAvailable());
         book1.toggleIsAvailable();

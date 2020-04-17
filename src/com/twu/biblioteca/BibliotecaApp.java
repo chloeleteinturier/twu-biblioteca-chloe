@@ -11,9 +11,10 @@ public class BibliotecaApp {
     private static ArrayList<Book> books = new ArrayList<Book>(Arrays.asList(book1, book2, book3));
     private static Library library = new Library(books);
 
-    private static Option option1 = new Option("List of books");
-    private static Option option2 = new Option("Quit");
-    private static ArrayList<Option> optionsList = new ArrayList<Option>(Arrays.asList(option1, option2));
+    private static Option optionBookList = new Option("List of books");
+    private static Option optionCheckout = new Option("Checkout a book");
+    private static Option optionExit = new Option("Quit");
+    private static ArrayList<Option> optionsList = new ArrayList<Option>(Arrays.asList(optionBookList, optionCheckout, optionExit));
     private static Menu menu = new Menu(optionsList);
 
     public static boolean quitApplication = false;

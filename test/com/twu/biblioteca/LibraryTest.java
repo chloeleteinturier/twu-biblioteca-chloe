@@ -17,7 +17,9 @@ public class LibraryTest {
     private Book book1 = new Book("Martin Eden", "Jack London", 1909);
     private Book book2 = new Book("The Stanger", "Albert Camus", 1942);
     private Book book3 = new Book("1984", "George Orwell", 1949);
-    private ArrayList<Book> books = new ArrayList<Book>(Arrays.asList(book1, book2, book3));
+    private Book book4 = new Book("Pride and Prejudice", "Jane Austen", 1913);
+
+    private ArrayList<Book> books = new ArrayList<Book>(Arrays.asList(book1, book2, book3, book4));
 
     private ByteArrayOutputStream testOut;
 
@@ -30,19 +32,20 @@ public class LibraryTest {
     @Before
     public void setUpLibrary(){
         library = new Library(books);
+        book4.toggleIsAvailable();
     }
 
     @Test
     public void LibraryHasBooks(){
-        assertEquals(3, library.getBooks().size());
+        assertEquals(4, library.getBooks().size());
         assertThat(library.getBooks(), hasItems(book1, book2, book3));
     }
 
     @Test
     public void LibraryDisplayBooks(){
-        String booksDetails = "Martin Eden | Jack London | 1909\n" +
-                "The Stanger | Albert Camus | 1942\n" +
-                "1984 | George Orwell | 1949\n";
+        String booksDetails = "0: Martin Eden | Jack London | 1909\n" +
+                "1: The Stanger | Albert Camus | 1942\n" +
+                "2: 1984 | George Orwell | 1949\n\n";
         library.displayBooks();
         assertEquals(booksDetails, testOut.toString());
     }
