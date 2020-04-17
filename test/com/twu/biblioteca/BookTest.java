@@ -29,4 +29,16 @@ public class BookTest {
         assertEquals(1909, book1.getYear());
     }
 
+    @Test
+    public void testBookIsAvailable() {
+        assertEquals(true, book1.getIsAvailable());
+    }
+
+    @Test
+    public void testBooktoggleIsAvailable() {
+        book1.toggleIsAvailable();
+        assertEquals(false, book1.getIsAvailable());
+        book1.toggleIsAvailable();
+        assertEquals(true, book1.getIsAvailable());
+    }
 }
