@@ -15,16 +15,18 @@ public class Library {
     }
 
     public static void displayBooks(){
-        getAvailableBooks();
-        for (Book book : booksAvailable){
-            if(book.getIsAvailable()) {
+        booksAvailable = getAvailableBooks();
+        if(booksAvailable.size()>0) {
+            for (Book book : booksAvailable) {
                 System.out.println(booksAvailable.indexOf(book) + ": " + book.getTitle() + " | " + book.getAuthor() + " | " + book.getYear());
             }
+        } else {
+            System.out.println("No books available in this library, sorry...");
         }
         System.out.println("");
     }
 
-    public static void getAvailableBooks(){
+    public static ArrayList<Book> getAvailableBooks(){
         booksAvailable = new ArrayList<Book>();
 
         for (Book book : books){
@@ -32,6 +34,7 @@ public class Library {
                 booksAvailable.add(book);
             }
         }
+        return booksAvailable;
     }
 
 }

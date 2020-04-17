@@ -28,10 +28,16 @@ public class Menu {
 
     public void applySelection(){
         for (Option option: optionsList){
-            if(option.getName().equalsIgnoreCase(selectedOption) || optionsList.indexOf(option) == Integer.parseInt(selectedOption)){
+//            if(option.getName().equalsIgnoreCase(selectedOption) || optionsList.indexOf(option) == Integer.parseInt(selectedOption)){
+            if(option.getName().equalsIgnoreCase(selectedOption)){
                 optionToApply = option;
             }
         }
+//            for (Option option : optionsList) {
+//                if (option.getName().equalsIgnoreCase(selectedOption) || optionsList.indexOf(option) == Integer.parseInt(selectedOption)) {
+//                    optionToApply = option;
+//                }
+//            }
         if(optionToApply != null){
             optionToApply.applyOption();
             optionToApply = null;
