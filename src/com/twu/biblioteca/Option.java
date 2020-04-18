@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Option {
@@ -26,44 +27,43 @@ public class Option {
                 BibliotecaApp.quitApplication = true;
                 return;
             case "Checkout a book":
-                Scanner scanner = new Scanner(System.in);
-                Library.displayBooks(Library.getAvailableBooks());
-                System.out.println("Type the title of the book you want to checkout");
-                chosenBookTitle = scanner.nextLine().trim();
-                for (Book book: Library.getAvailableBooks()){
-                    if(book.getTitle().equalsIgnoreCase(chosenBookTitle)) {
-                        bookChosen = book;
-                    }
-                }
-                if(bookChosen != null){
-                    bookChosen.toggleIsAvailable();
-                    System.out.println("Thank you! Enjoy the book");
-                    bookChosen = null;
-                } else {
-                    System.out.println("Sorry, that book is not available");
-                }
+                ArrayList<Book> booksAvailable = Library.getAvailableBooks();
+                String checkoutIndication = "Type the title of the book you want to checkout";
+                String checkoutSuccessMessage = "Thank you! Enjoy the book";
+                String checkoutErrorMessage = "Sorry, that book is not available";
+
+                handleCheckoutReturnBook(booksAvailable, checkoutIndication, checkoutSuccessMessage, checkoutErrorMessage);
                 return;
             case "Return a book":
-                Scanner scannerReturn = new Scanner(System.in);
-                Library.displayBooks(Library.getNotAvailableBooks());
-                System.out.println("Type the title of the book you want to return");
-                chosenBookTitle = scannerReturn.nextLine().trim();
-                for (Book book: Library.getNotAvailableBooks()){
-                    if(book.getTitle().equalsIgnoreCase(chosenBookTitle)) {
-                        bookChosen = book;
-                    }
-                }
-                if(bookChosen != null){
-                    bookChosen.toggleIsAvailable();
-                    System.out.println("Thank you for returning the book");
-                    bookChosen = null;
-                } else {
-                    System.out.println("That is not a valid book to return");
-                }
+                ArrayList<Book> booksNotAvailable = Library.getNotAvailableBooks();
+                String returnIndication = "Type the title of the book you want to return";
+                String returnSuccessMessage = "Thank you for returning the book";
+                String returnErrorMessage = "That is not a valid book to return";
+
+                handleCheckoutReturnBook(booksNotAvailable, returnIndication, returnSuccessMessage, returnErrorMessage);
                 return;
             default:
                 System.out.println("Please select a valid option");
                 return;
+        }
+    }
+
+    private void handleCheckoutReturnBook(ArrayList<Book> booksToManage, String indication, String successMessage, String errorMessage){
+        Library.displayBooks(booksToManage);
+        System.out.println(indication);
+        Scanner scanner = new Scanner(System.in);
+        chosenBookTitle = scanner.nextLine().trim();
+        for (Book book: booksToManage){
+            if(book.getTitle().equalsIgnoreCase(chosenBookTitle)) {
+                bookChosen = book;
+            }
+        }
+        if(bookChosen != null){
+            bookChosen.toggleIsAvailable();
+            System.out.println(successMessage);
+            bookChosen = null;
+        } else {
+            System.out.println(errorMessage);
         }
     }
 }

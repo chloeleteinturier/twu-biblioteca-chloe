@@ -9,8 +9,6 @@ public class Library {
 
     public Library(ArrayList<Book> books){
         this.books = books;
-        this.booksAvailable = getAvailableBooks();
-        this.booksNotAvailable = getNotAvailableBooks();
     }
 
     public static ArrayList<Book> getBooks(){
@@ -23,7 +21,7 @@ public class Library {
                 System.out.println(booksToDisplay.indexOf(book) + ": " + book.getTitle() + " | " + book.getAuthor() + " | " + book.getYear());
             }
         } else {
-            System.out.println("No books available in this library, sorry...");
+            System.out.println("No books to show!");
         }
         System.out.println("");
     }
