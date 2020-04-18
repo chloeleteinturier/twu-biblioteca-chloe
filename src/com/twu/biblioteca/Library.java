@@ -17,20 +17,7 @@ public class Library {
         return books;
     }
 
-//    public static void displayBooks(){
-//        booksAvailable = getAvailableBooks();
-//        if(booksAvailable.size()>0) {
-//            for (Book book : booksAvailable) {
-//                System.out.println(booksAvailable.indexOf(book) + ": " + book.getTitle() + " | " + book.getAuthor() + " | " + book.getYear());
-//            }
-//        } else {
-//            System.out.println("No books available in this library, sorry...");
-//        }
-//        System.out.println("");
-//    }
-
     public static void displayBooks(ArrayList<Book> booksToDisplay){
-//        booksAvailable = getAvailableBooks();
         if(booksToDisplay.size()>0) {
             for (Book book : booksToDisplay) {
                 System.out.println(booksToDisplay.indexOf(book) + ": " + book.getTitle() + " | " + book.getAuthor() + " | " + book.getYear());
