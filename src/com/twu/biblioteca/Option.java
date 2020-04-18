@@ -19,7 +19,7 @@ public class Option {
     public void applyOption(){
         switch (getName()){
             case "List of books":
-                Library.displayBooks();
+                Library.displayBooks(Library.getAvailableBooks());
                 return;
             case "Quit":
                 System.out.println("See you soon :)");
@@ -27,7 +27,7 @@ public class Option {
                 return;
             case "Checkout a book":
                 Scanner scanner = new Scanner(System.in);
-                Library.displayBooks();
+                Library.displayBooks(Library.getAvailableBooks());
                 System.out.println("Type the title of the book you want to checkout");
                 chosenBookTitle = scanner.nextLine().trim();
                 for (Book book: Library.getAvailableBooks()){
@@ -41,6 +41,24 @@ public class Option {
                     bookChosen = null;
                 } else {
                     System.out.println("Sorry, that book is not available");
+                }
+                return;
+            case "Return a book":
+                Scanner scannerReturn = new Scanner(System.in);
+                Library.displayBooks(Library.getNotAvailableBooks());
+                System.out.println("Type the title of the book you want to return");
+                chosenBookTitle = scannerReturn.nextLine().trim();
+                for (Book book: Library.getNotAvailableBooks()){
+                    if(book.getTitle().equalsIgnoreCase(chosenBookTitle)) {
+                        bookChosen = book;
+                    }
+                }
+                if(bookChosen != null){
+                    bookChosen.toggleIsAvailable();
+                    System.out.println("Thank you for returning the book");
+                    bookChosen = null;
+                } else {
+                    System.out.println("That is not a valid book to return");
                 }
                 return;
             default:

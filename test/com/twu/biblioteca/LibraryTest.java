@@ -42,11 +42,18 @@ public class LibraryTest {
     }
 
     @Test
-    public void LibraryDisplayBooks(){
+    public void LibraryDisplayBooksAvailable(){
         String booksDetails = "0: Martin Eden | Jack London | 1909\n" +
                 "1: The Stanger | Albert Camus | 1942\n" +
                 "2: 1984 | George Orwell | 1949\n\n";
-        library.displayBooks();
+        Library.displayBooks(Library.getAvailableBooks());
+        assertEquals(booksDetails, testOut.toString());
+    }
+
+    @Test
+    public void LibraryDisplayBooksNotAvailable(){
+        String booksDetails = "0: Pride and Prejudice | Jane Austen | 1913\n\n";
+        Library.displayBooks(Library.getNotAvailableBooks());
         assertEquals(booksDetails, testOut.toString());
     }
 }
