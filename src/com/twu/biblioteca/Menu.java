@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Menu {
     private ArrayList<Option> optionsList;
-    private String selectedOption;
+    private int selectedOption;
     private Option optionToApply;
 
     public Menu(ArrayList<Option> optionsList){
@@ -23,12 +23,12 @@ public class Menu {
     public void handleSelection(){
         showOptions();
         Scanner scanner = new Scanner(System.in);
-        selectedOption = scanner.nextLine().trim();
+        selectedOption = scanner.nextInt();
     }
 
     public void applySelection(){
         for (Option option: optionsList){
-            if(option.getName().equalsIgnoreCase(selectedOption)){
+            if(optionsList.indexOf(option) == selectedOption){
                 optionToApply = option;
             }
         }
