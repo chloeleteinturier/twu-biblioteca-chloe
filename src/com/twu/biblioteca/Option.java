@@ -32,7 +32,7 @@ public class Option {
                 String checkoutSuccessMessage = "Thank you! Enjoy the book";
                 String checkoutErrorMessage = "Sorry, that book is not available";
 
-                handleCheckoutReturnBook(booksAvailable, checkoutIndication, checkoutSuccessMessage, checkoutErrorMessage);
+                handleBookStatus(booksAvailable, checkoutIndication, checkoutSuccessMessage, checkoutErrorMessage);
                 return;
             case "Return a book":
                 ArrayList<Book> booksNotAvailable = Library.getNotAvailableBooks();
@@ -40,7 +40,7 @@ public class Option {
                 String returnSuccessMessage = "Thank you for returning the book";
                 String returnErrorMessage = "That is not a valid book to return";
 
-                handleCheckoutReturnBook(booksNotAvailable, returnIndication, returnSuccessMessage, returnErrorMessage);
+                handleBookStatus(booksNotAvailable, returnIndication, returnSuccessMessage, returnErrorMessage);
                 return;
             default:
                 System.out.println("Please select a valid option");
@@ -48,7 +48,7 @@ public class Option {
         }
     }
 
-    private void handleCheckoutReturnBook(ArrayList<Book> booksToManage, String indication, String successMessage, String errorMessage){
+    private void handleBookStatus(ArrayList<Book> booksToManage, String indication, String successMessage, String errorMessage){
         Library.displayBooks(booksToManage);
         System.out.println(indication);
         Scanner scanner = new Scanner(System.in);
