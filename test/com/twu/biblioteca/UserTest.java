@@ -16,7 +16,7 @@ public class UserTest {
 
     @Test
     public void testUserHasLibraryNumber() {
-        assertEquals("123-1234", user1.getLibraryUser());
+        assertEquals("123-1234", user1.getLibraryNumber());
     }
 
     @Test

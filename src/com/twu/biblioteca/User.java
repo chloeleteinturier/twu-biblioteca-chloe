@@ -1,16 +1,18 @@
 package com.twu.biblioteca;
 
 public class User {
-    private String libraryUser;
+    private String libraryNumber;
     private String password;
+    private boolean isLoggedIn;
 
-    public User(String libraryUser, String password){
-        this.libraryUser = libraryUser;
+    public User(String libraryNumber, String password){
+        this.libraryNumber = libraryNumber;
         this.password = password;
+        this.isLoggedIn = false;
     }
 
-    public String getLibraryUser(){
-        return libraryUser;
+    public String getLibraryNumber(){
+        return libraryNumber;
     }
 
     public String getPassword(){

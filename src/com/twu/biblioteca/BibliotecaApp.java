@@ -7,7 +7,9 @@ public class BibliotecaApp {
     private static  Library library;
     private static Menu menu;
     private static UserDataBase userDataBase;
+
     public static boolean quitApplication = false;
+    public static User currentUser = null;
 
     public static void main(String[] args) {
         setUpBiblioteca();
@@ -50,9 +52,10 @@ public class BibliotecaApp {
         Option optionMovieList = new Option("List of movies");
         Option optionCheckoutMovie = new Option("Checkout a movie");
         Option optionReturnMovie = new Option("Return a movie");
+        Option optionLogin = new Option("Login");
         Option optionExit = new Option("Quit");
 
-        ArrayList<Option> optionsList = new ArrayList<Option>(Arrays.asList(optionBookList, optionCheckout, optionReturn, optionMovieList, optionCheckoutMovie, optionReturnMovie, optionExit));
+        ArrayList<Option> optionsList = new ArrayList<Option>(Arrays.asList(optionBookList, optionCheckout, optionReturn, optionMovieList, optionCheckoutMovie, optionReturnMovie,optionLogin, optionExit));
 
         menu = new Menu(optionsList);
     }

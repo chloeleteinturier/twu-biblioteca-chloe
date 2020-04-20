@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class Option {
 
     private String name;
-//    private int chosenBookIndex;
     private Book bookChosen;
     private Movie movieChosen;
 
@@ -33,7 +32,11 @@ public class Option {
                 String checkoutSuccessMessage = "Thank you! Enjoy the book";
                 String checkoutErrorMessage = "Sorry, that book is not available";
 
-                handleBookStatus(booksAvailable, checkoutIndication, checkoutSuccessMessage, checkoutErrorMessage);
+                if (BibliotecaApp.currentUser == null){
+                    login();
+                } else {
+                    handleBookStatus(booksAvailable, checkoutIndication, checkoutSuccessMessage, checkoutErrorMessage);
+                }
                 return;
             case "Return a book":
                 ArrayList<Book> booksNotAvailable = Library.getNotAvailableBooks();
@@ -41,7 +44,11 @@ public class Option {
                 String returnSuccessMessage = "Thank you for returning the book";
                 String returnErrorMessage = "That is not a valid book to return";
 
-                handleBookStatus(booksNotAvailable, returnIndication, returnSuccessMessage, returnErrorMessage);
+                if (BibliotecaApp.currentUser == null){
+                    login();
+                } else {
+                    handleBookStatus(booksNotAvailable, returnIndication, returnSuccessMessage, returnErrorMessage);
+                }
                 return;
             case "List of movies":
                 Library.displayMovies(Library.getAvailableMovies());
@@ -52,7 +59,12 @@ public class Option {
                 String checkoutMovieSuccessMessage = "Thank you! Enjoy the movie";
                 String checkoutMovieErrorMessage = "Sorry, that movie is not available";
 
-                handleMovieStatus(moviesAvailable, checkoutMovieIndication, checkoutMovieSuccessMessage, checkoutMovieErrorMessage);
+                if (BibliotecaApp.currentUser == null){
+                    login();
+                } else {
+                    handleMovieStatus(moviesAvailable, checkoutMovieIndication, checkoutMovieSuccessMessage, checkoutMovieErrorMessage);
+                }
+
                 return;
             case "Return a movie":
                 ArrayList<Movie> moviesNotAvailable = Library.getNotAvailableMovies();
@@ -60,7 +72,14 @@ public class Option {
                 String returnMovieSuccessMessage = "Thank you for returning the movie";
                 String returnMovieErrorMessage = "That is not a valid movie to return";
 
-                handleMovieStatus(moviesNotAvailable, returnMovieIndication, returnMovieSuccessMessage, returnMovieErrorMessage);
+                if (BibliotecaApp.currentUser == null){
+                    login();
+                } else {
+                    handleMovieStatus(moviesNotAvailable, returnMovieIndication, returnMovieSuccessMessage, returnMovieErrorMessage);
+                }
+                return;
+            case "Login":
+                login();
                 return;
             default:
                 System.out.println("Please select a valid option");
@@ -82,6 +101,12 @@ public class Option {
             }
             if (bookChosen != null) {
                 bookChosen.toggleIsAvailable();
+                if (!bookChosen.getIsAvailable()){
+                    bookChosen.setBorrower(BibliotecaApp.currentUser);
+                } else {
+                    bookChosen.setBorrower(null);
+                }
+                System.out.println(bookChosen.getBorrower());
                 System.out.println(successMessage);
                 bookChosen = null;
             } else {
@@ -110,5 +135,12 @@ public class Option {
                 System.out.println(errorMessage);
             }
         }
+    }
+
+    private void login(){
+        System.out.println("Please, type your library number:");
+        Scanner scanner = new Scanner(System.in);
+        String libraryNumber = scanner.next();
+        UserDataBase.loginUser(libraryNumber);
     }
 }
