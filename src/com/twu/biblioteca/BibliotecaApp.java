@@ -53,16 +53,17 @@ public class BibliotecaApp {
         Option optionCheckoutMovie = new Option("Checkout a movie");
         Option optionReturnMovie = new Option("Return a movie");
         Option optionLogin = new Option("Login");
+        Option optionInfo = new Option("See my information");
         Option optionExit = new Option("Quit");
 
-        ArrayList<Option> optionsList = new ArrayList<Option>(Arrays.asList(optionBookList, optionCheckout, optionReturn, optionMovieList, optionCheckoutMovie, optionReturnMovie,optionLogin, optionExit));
+        ArrayList<Option> optionsList = new ArrayList<Option>(Arrays.asList(optionBookList, optionCheckout, optionReturn, optionMovieList, optionCheckoutMovie, optionReturnMovie,optionLogin,optionInfo, optionExit));
 
         menu = new Menu(optionsList);
     }
 
     private static void initializeUserDataBase(){
-        User user1 = new User("123-1234", "123");
-        User user2 = new User("234-5678", "qwe");
+        User user1 = new User("123-1234", "123", "Chloé", "chloe.leteinturier@thoughtworks.com", "123456789");
+        User user2 = new User("234-5678", "qwe", "John", "john@gmail.com", "987654321");
 
         ArrayList<User> usersList = new ArrayList<User>(Arrays.asList(user1, user2));
 

@@ -28,7 +28,7 @@ public class UserDataBase {
             System.out.println("Sorry, impossible to connect you");
         } else {
             BibliotecaApp.currentUser = currentUser;
-            System.out.println("Hello, you are now logged in!");
+            System.out.println("Hello " + currentUser.getName() + ", you are logged in!");
         }
     }
 }

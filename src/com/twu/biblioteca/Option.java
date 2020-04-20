@@ -81,6 +81,16 @@ public class Option {
             case "Login":
                 login();
                 return;
+            case "See my information":
+                User currentUser = BibliotecaApp.currentUser;
+                if (BibliotecaApp.currentUser == null){
+                    login();
+                } else {
+                    System.out.println("Name: " + currentUser.getName());
+                    System.out.println("Email: " + currentUser.getEmail());
+                    System.out.println("Phone number: " + currentUser.getPhoneNumber());
+                }
+                return;
             default:
                 System.out.println("Please select a valid option");
                 return;

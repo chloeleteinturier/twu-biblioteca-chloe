@@ -11,7 +11,7 @@ public class UserTest {
 
     @Before
     public void setUpUser() {
-        user1 = new User("123-1234", "123");
+        User user1 = new User("123-1234", "123", "Chloé", "chloe.leteinturier@thoughtworks.com", "123456789");
     }
 
     @Test
