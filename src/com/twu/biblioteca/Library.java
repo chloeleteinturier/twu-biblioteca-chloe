@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Library {
     private static ArrayList<Book> books;
-    private static ArrayList<Book> booksAvailable;
+//    private static ArrayList<Book> booksAvailable;
     private static ArrayList<Book> booksNotAvailable;
 
     public Library(ArrayList<Book> books){
@@ -27,7 +27,7 @@ public class Library {
     }
 
     public static ArrayList<Book> getAvailableBooks(){
-        booksAvailable = new ArrayList<Book>();
+        ArrayList<Book> booksAvailable = new ArrayList<Book>();
 
         for (Book book : books){
             if(book.getIsAvailable()) {
