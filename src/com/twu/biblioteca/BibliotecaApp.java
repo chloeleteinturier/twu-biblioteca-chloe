@@ -9,7 +9,7 @@ public class BibliotecaApp {
     private static Book book2 = new Book("The Stanger", "Albert Camus", 1942);
     private static Book book3 = new Book("1984", "George Orwell", 1949);
     private static ArrayList<Book> books = new ArrayList<Book>(Arrays.asList(book1, book2, book3));
-    private static Library library = new Library(books);
+//    private static Library library = new Library(books);
 
     private static Option optionBookList = new Option("List of books");
     private static Option optionCheckout = new Option("Checkout a book");

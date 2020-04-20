@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public class Library {
     private static ArrayList<Book> books;
+    private static ArrayList<Movie> movies;
 
-    public Library(ArrayList<Book> books){
+    public Library(ArrayList<Book> books, ArrayList<Movie> movies){
         this.books = books;
+        this.movies = movies;
     }
 
     public static ArrayList<Book> getBooks(){
@@ -44,6 +46,43 @@ public class Library {
             }
         }
         return booksNotAvailable;
+    }
+
+    public static ArrayList<Movie> getMovies(){
+        return movies;
+    }
+
+    public static void displayMovies(ArrayList<Movie> moviesToDisplay){
+        if(moviesToDisplay.size()>0) {
+            for (Movie movie : moviesToDisplay) {
+                System.out.println(moviesToDisplay.indexOf(movie) + ": " + movie.getName() + " | " + movie.getYear() + " | " + movie.getDirector() + " | " + movie.getRating());
+            }
+        } else {
+            System.out.println("No movies to show!");
+        }
+        System.out.println("");
+    }
+
+    public static ArrayList<Movie> getAvailableMovies(){
+        ArrayList<Movie> moviesAvailable = new ArrayList<Movie>();
+
+        for (Movie movie : movies){
+            if(movie.getIsAvailable()) {
+                moviesAvailable.add(movie);
+            }
+        }
+        return moviesAvailable;
+    }
+
+    public static ArrayList<Movie> getNotAvailableMovies(){
+        ArrayList<Movie> moviesNotAvailable = new ArrayList<Movie>();
+
+        for (Movie movie : movies){
+            if(!movie.getIsAvailable()) {
+                moviesNotAvailable.add(movie);
+            }
+        }
+        return moviesNotAvailable;
     }
 
 

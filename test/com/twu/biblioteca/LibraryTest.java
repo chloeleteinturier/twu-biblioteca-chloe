@@ -18,8 +18,13 @@ public class LibraryTest {
     private Book book2 = new Book("The Stanger", "Albert Camus", 1942);
     private Book book3 = new Book("1984", "George Orwell", 1949);
     private Book book4 = new Book("Pride and Prejudice", "Jane Austen", 1913);
-
     private ArrayList<Book> books = new ArrayList<Book>(Arrays.asList(book1, book2, book3, book4));
+
+    private Movie movie1 = new Movie("Call me by your name", 2017, "Luca Guadagnino", 7.9 );
+    private Movie movie2 = new Movie("Titanic", 1997, "James Cameron", 7.8 );
+    private Movie movie3 = new Movie("The sixth sense", 1999, "Night Shyamalan", 8.1 );
+    private Movie movie4 = new Movie("Eternal sunshine of the spotless mind", 2004, "Michel Gondry", 8.3 );
+    private ArrayList<Movie> movies = new ArrayList<Movie>(Arrays.asList(movie1, movie2, movie3, movie4));
 
     private ByteArrayOutputStream testOut;
 
@@ -31,8 +36,9 @@ public class LibraryTest {
 
     @Before
     public void setUpLibrary(){
-        library = new Library(books);
+        library = new Library(books, movies);
         book4.toggleIsAvailable();
+        movie4.toggleIsAvailable();
     }
 
     @Test
@@ -55,5 +61,32 @@ public class LibraryTest {
         String booksDetails = "0: Pride and Prejudice | Jane Austen | 1913\n\n";
         Library.displayBooks(Library.getNotAvailableBooks());
         assertEquals(booksDetails, testOut.toString());
+    }
+
+    @Test
+    public void LibraryHasMovies(){
+        assertEquals(4, library.getMovies().size());
+        assertThat(library.getMovies(), hasItems(movie1, movie2, movie3));
+    }
+
+    @Test
+    public  void LibraryHasAvailableMovies(){
+        assertEquals(3, Library.getAvailableMovies().size());
+    }
+
+    @Test
+    public void LibraryDisplayMoviesAvailable(){
+        String moviesDetails = "0: Call me by your name | 2017 | Luca Guadagnino | 7.9\n" +
+                "1: Titanic | 1997 | James Cameron | 7.8\n" +
+                "2: The sixth sense | 1999 | Night Shyamalan | 8.1\n\n";
+        Library.displayMovies(Library.getAvailableMovies());
+        assertEquals(moviesDetails, testOut.toString());
+    }
+
+    @Test
+    public void LibraryDisplayMoviesNotAvailable(){
+        String moviesDetails = "0: Eternal sunshine of the spotless mind | 2004 | Michel Gondry | 8.3\n\n";
+        Library.displayMovies(Library.getNotAvailableMovies());
+        assertEquals(moviesDetails, testOut.toString());
     }
 }
