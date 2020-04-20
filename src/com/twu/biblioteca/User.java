@@ -36,4 +36,8 @@ public class User {
     public String getPhoneNumber(){
         return phoneNumber;
     }
+
+    public void printInfo(){
+        System.out.println("Name: " + getName() + "\n" + "Email: " + getEmail() + "\n" + "Phone number: " + getPhoneNumber());
+    }
 }

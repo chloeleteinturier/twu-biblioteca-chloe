@@ -1,18 +1,14 @@
 package com.twu.biblioteca;
 
-public class Book {
+public class Book extends Media {
     private String title;
     private String author;
     private int year;
-    private boolean isAvailable;
-    private User borrower;
 
     public Book(String title, String author, int year){
         this.title = title;
         this.author = author;
         this.year = year;
-        this.isAvailable = true;
-        this.borrower = null;
     }
 
     public String getTitle(){
@@ -27,16 +23,10 @@ public class Book {
         return year;
     }
 
-    public boolean getIsAvailable(){
-        return isAvailable;
-    }
-
-    public void toggleIsAvailable(){
-        isAvailable = !isAvailable;
-    }
-
-    public void setBorrower(User newBorrower){
-        borrower = newBorrower;
+    @Override
+    public String getInfo(){
+        String information = getTitle() + " | " + getAuthor() + " | " + getYear();
+        return information;
     }
 
 }

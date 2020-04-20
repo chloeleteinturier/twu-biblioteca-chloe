@@ -3,59 +3,27 @@ package com.twu.biblioteca;
 import java.util.ArrayList;
 
 public class Library {
-    private static ArrayList<Book> books;
-    private static ArrayList<Movie> movies;
 
-    public Library(ArrayList<Book> books, ArrayList<Movie> movies){
+    public static ArrayList<Media> books;
+    public static ArrayList<Media> movies;
+
+    public Library(ArrayList<Media> books, ArrayList<Media> movies){
         this.books = books;
         this.movies = movies;
     }
 
-    public static ArrayList<Book> getBooks(){
+    public static ArrayList<Media> getBooks(){
         return books;
     }
 
-    public static void displayBooks(ArrayList<Book> booksToDisplay){
-        if(booksToDisplay.size()>0) {
-            for (Book book : booksToDisplay) {
-                System.out.println(booksToDisplay.indexOf(book) + ": " + book.getTitle() + " | " + book.getAuthor() + " | " + book.getYear());
-            }
-        } else {
-            System.out.println("No books to show!");
-        }
-        System.out.println("");
-    }
-
-    public static ArrayList<Book> getAvailableBooks(){
-        ArrayList<Book> booksAvailable = new ArrayList<Book>();
-
-        for (Book book : books){
-            if(book.getIsAvailable()) {
-                booksAvailable.add(book);
-            }
-        }
-        return booksAvailable;
-    }
-
-    public static ArrayList<Book> getNotAvailableBooks(){
-        ArrayList<Book> booksNotAvailable = new ArrayList<Book>();
-
-        for (Book book : books){
-            if(!book.getIsAvailable()) {
-                booksNotAvailable.add(book);
-            }
-        }
-        return booksNotAvailable;
-    }
-
-    public static ArrayList<Movie> getMovies(){
+    public static ArrayList<Media> getMovies(){
         return movies;
     }
 
-    public static void displayMovies(ArrayList<Movie> moviesToDisplay){
-        if(moviesToDisplay.size()>0) {
-            for (Movie movie : moviesToDisplay) {
-                System.out.println(moviesToDisplay.indexOf(movie) + ": " + movie.getName() + " | " + movie.getYear() + " | " + movie.getDirector() + " | " + movie.getRating());
+    public static void displayMedias(ArrayList<Media> mediasToDisplay){
+        if(mediasToDisplay.size()>0) {
+            for (Media media : mediasToDisplay) {
+                System.out.println(mediasToDisplay.indexOf(media) + ": " + media.getInfo());
             }
         } else {
             System.out.println("No movies to show!");
@@ -63,27 +31,25 @@ public class Library {
         System.out.println("");
     }
 
-    public static ArrayList<Movie> getAvailableMovies(){
-        ArrayList<Movie> moviesAvailable = new ArrayList<Movie>();
-
-        for (Movie movie : movies){
-            if(movie.getIsAvailable()) {
-                moviesAvailable.add(movie);
+    public static ArrayList<Media> getAvailableMedias(ArrayList<Media> mediaToFilter){
+        ArrayList<Media> mediasAvailable = new ArrayList<Media>();
+        for (Media media : mediaToFilter){
+            if(media.getIsAvailable()) {
+                mediasAvailable.add(media);
             }
         }
-        return moviesAvailable;
+        return mediasAvailable;
     }
 
-    public static ArrayList<Movie> getNotAvailableMovies(){
-        ArrayList<Movie> moviesNotAvailable = new ArrayList<Movie>();
+    public static ArrayList<Media> getNotAvailableMedias(ArrayList<Media> mediaToFilter){
+        ArrayList<Media> mediasNotAvailable = new ArrayList<Media>();
 
-        for (Movie movie : movies){
-            if(!movie.getIsAvailable()) {
-                moviesNotAvailable.add(movie);
+        for (Media media : mediaToFilter){
+            if(!media.getIsAvailable()) {
+                mediasNotAvailable.add(media);
             }
         }
-        return moviesNotAvailable;
+        return mediasNotAvailable;
     }
-
 
 }

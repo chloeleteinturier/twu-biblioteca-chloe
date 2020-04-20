@@ -1,20 +1,16 @@
 package com.twu.biblioteca;
 
-public class Movie {
+public class Movie extends Media {
     private String name;
     private int year;
     private String director;
     private double rating;
-    private boolean isAvailable;
-    private User borrower;
 
     public Movie(String name,int year, String director, double rating){
         this.name = name;
         this.year = year;
         this.director = director;
         this.rating = rating;
-        this.isAvailable = true;
-        this.borrower = null;
     }
 
     public String getName(){
@@ -33,15 +29,10 @@ public class Movie {
         return rating;
     }
 
-    public boolean getIsAvailable(){
-        return isAvailable;
+    @Override
+    public String getInfo(){
+        String information = getName() + " | " + getYear() + " | " + getDirector() + " | " + getRating();
+        return information;
     }
 
-    public void toggleIsAvailable(){
-        isAvailable = !isAvailable;
-    }
-
-    public void setBorrower(User newBorrower){
-        borrower = newBorrower;
-    }
 }

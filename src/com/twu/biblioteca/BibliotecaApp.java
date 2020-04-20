@@ -34,13 +34,13 @@ public class BibliotecaApp {
         Book book1 = new Book("Martin Eden", "Jack London", 1909);
         Book book2 = new Book("The Stanger", "Albert Camus", 1942);
         Book book3 = new Book("1984", "George Orwell", 1949);
-        ArrayList<Book> books = new ArrayList<Book>(Arrays.asList(book1, book2, book3));
+        ArrayList<Media> books = new ArrayList<Media>(Arrays.asList(book1, book2, book3));
 
         Movie movie1 = new Movie("Call me by your name", 2017, "Luca Guadagnino", 7.9 );
         Movie movie2 = new Movie("Titanic", 1997, "James Cameron", 7.8 );
         Movie movie3 = new Movie("The sixth sense", 1999, "Night Shyamalan", 8.1 );
 
-        ArrayList<Movie> movies = new ArrayList<Movie>(Arrays.asList(movie1, movie2, movie3));
+        ArrayList<Media> movies = new ArrayList<Media>(Arrays.asList(movie1, movie2, movie3));
 
         library = new Library(books, movies);
     }
