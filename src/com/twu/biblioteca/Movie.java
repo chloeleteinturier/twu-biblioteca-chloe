@@ -6,6 +6,7 @@ public class Movie {
     private String director;
     private double rating;
     private boolean isAvailable;
+    private User borrower;
 
     public Movie(String name,int year, String director, double rating){
         this.name = name;
@@ -13,6 +14,7 @@ public class Movie {
         this.director = director;
         this.rating = rating;
         this.isAvailable = true;
+        this.borrower = null;
     }
 
     public String getName(){
@@ -37,5 +39,9 @@ public class Movie {
 
     public void toggleIsAvailable(){
         isAvailable = !isAvailable;
+    }
+
+    public void setBorrower(User newBorrower){
+        borrower = newBorrower;
     }
 }

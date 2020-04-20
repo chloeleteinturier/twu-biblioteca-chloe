@@ -104,11 +104,7 @@ public class Option {
             System.out.println(indication);
             Scanner scanner = new Scanner(System.in);
             int chosenBookIndex = scanner.nextInt();
-            for (Book book : booksToManage) {
-                if (booksToManage.indexOf(book) == chosenBookIndex) {
-                    bookChosen = book;
-                }
-            }
+            bookChosen = booksToManage.get(chosenBookIndex);
             if (bookChosen != null) {
                 bookChosen.toggleIsAvailable();
                 if (!bookChosen.getIsAvailable()){
@@ -116,7 +112,6 @@ public class Option {
                 } else {
                     bookChosen.setBorrower(null);
                 }
-                System.out.println(bookChosen.getBorrower());
                 System.out.println(successMessage);
                 bookChosen = null;
             } else {
@@ -132,13 +127,14 @@ public class Option {
             System.out.println(indication);
             Scanner scanner = new Scanner(System.in);
             int chosenMovieIndex = scanner.nextInt();
-            for (Movie movie : moviesToManage) {
-                if (moviesToManage.indexOf(movie) == chosenMovieIndex) {
-                    movieChosen = movie;
-                }
-            }
+            movieChosen = moviesToManage.get(chosenMovieIndex);
             if (movieChosen != null) {
                 movieChosen.toggleIsAvailable();
+                if (!movieChosen.getIsAvailable()){
+                    movieChosen.setBorrower(BibliotecaApp.currentUser);
+                } else {
+                    movieChosen.setBorrower(null);
+                }
                 System.out.println(successMessage);
                 movieChosen = null;
             } else {

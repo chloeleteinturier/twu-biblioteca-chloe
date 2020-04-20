@@ -38,8 +38,5 @@ public class Book {
     public void setBorrower(User newBorrower){
         borrower = newBorrower;
     }
-    public User getBorrower(){
-        return borrower;
-    }
 
 }
