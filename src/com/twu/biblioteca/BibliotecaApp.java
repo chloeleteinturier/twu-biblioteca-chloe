@@ -6,6 +6,7 @@ import java.util.Arrays;
 public class BibliotecaApp {
     private static  Library library;
     private static Menu menu;
+    private static UserDataBase userDataBase;
     public static boolean quitApplication = false;
 
     public static void main(String[] args) {
@@ -24,6 +25,7 @@ public class BibliotecaApp {
     private static void setUpBiblioteca(){
         initializeLibrary();
         initializeMenu();
+        initializeUserDataBase();
     }
 
     private static void initializeLibrary(){
@@ -53,6 +55,15 @@ public class BibliotecaApp {
         ArrayList<Option> optionsList = new ArrayList<Option>(Arrays.asList(optionBookList, optionCheckout, optionReturn, optionMovieList, optionCheckoutMovie, optionReturnMovie, optionExit));
 
         menu = new Menu(optionsList);
+    }
+
+    private static void initializeUserDataBase(){
+        User user1 = new User("123-1234", "123");
+        User user2 = new User("234-5678", "qwe");
+
+        ArrayList<User> usersList = new ArrayList<User>(Arrays.asList(user1, user2));
+
+        userDataBase = new UserDataBase(usersList);
     }
 
 }
