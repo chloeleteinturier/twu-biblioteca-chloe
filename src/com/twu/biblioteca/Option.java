@@ -50,20 +50,23 @@ public class Option {
 
     private void handleBookStatus(ArrayList<Book> booksToManage, String indication, String successMessage, String errorMessage){
         Library.displayBooks(booksToManage);
-        System.out.println(indication);
-        Scanner scanner = new Scanner(System.in);
-        chosenBookIndex = scanner.nextInt();
-        for (Book book: booksToManage){
-            if(booksToManage.indexOf(book) == chosenBookIndex){
-                bookChosen = book;
+
+        if (booksToManage.size() > 0) {
+            System.out.println(indication);
+            Scanner scanner = new Scanner(System.in);
+            chosenBookIndex = scanner.nextInt();
+            for (Book book : booksToManage) {
+                if (booksToManage.indexOf(book) == chosenBookIndex) {
+                    bookChosen = book;
+                }
             }
-        }
-        if(bookChosen != null){
-            bookChosen.toggleIsAvailable();
-            System.out.println(successMessage);
-            bookChosen = null;
-        } else {
-            System.out.println(errorMessage);
+            if (bookChosen != null) {
+                bookChosen.toggleIsAvailable();
+                System.out.println(successMessage);
+                bookChosen = null;
+            } else {
+                System.out.println(errorMessage);
+            }
         }
     }
 }

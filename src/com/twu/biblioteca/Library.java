@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 public class Library {
     private static ArrayList<Book> books;
-//    private static ArrayList<Book> booksAvailable;
-    private static ArrayList<Book> booksNotAvailable;
 
     public Library(ArrayList<Book> books){
         this.books = books;
@@ -38,7 +36,7 @@ public class Library {
     }
 
     public static ArrayList<Book> getNotAvailableBooks(){
-        booksNotAvailable = new ArrayList<Book>();
+        ArrayList<Book> booksNotAvailable = new ArrayList<Book>();
 
         for (Book book : books){
             if(!book.getIsAvailable()) {
