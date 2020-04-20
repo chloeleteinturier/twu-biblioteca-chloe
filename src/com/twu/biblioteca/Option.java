@@ -6,8 +6,9 @@ import java.util.Scanner;
 public class Option {
 
     private String name;
-    private int chosenBookIndex;
+//    private int chosenBookIndex;
     private Book bookChosen;
+    private Movie movieChosen;
 
     public Option(String name){
         this.name = name;
@@ -28,7 +29,7 @@ public class Option {
                 return;
             case "Checkout a book":
                 ArrayList<Book> booksAvailable = Library.getAvailableBooks();
-                String checkoutIndication = "Type the title of the book you want to checkout";
+                String checkoutIndication = "Select the book you want to checkout";
                 String checkoutSuccessMessage = "Thank you! Enjoy the book";
                 String checkoutErrorMessage = "Sorry, that book is not available";
 
@@ -42,6 +43,25 @@ public class Option {
 
                 handleBookStatus(booksNotAvailable, returnIndication, returnSuccessMessage, returnErrorMessage);
                 return;
+            case "List of movies":
+                Library.displayMovies(Library.getAvailableMovies());
+                return;
+            case "Checkout a movie":
+                ArrayList<Movie> moviesAvailable = Library.getAvailableMovies();
+                String checkoutMovieIndication = "Select the movie you want to checkout";
+                String checkoutMovieSuccessMessage = "Thank you! Enjoy the movie";
+                String checkoutMovieErrorMessage = "Sorry, that movie is not available";
+
+                handleMovieStatus(moviesAvailable, checkoutMovieIndication, checkoutMovieSuccessMessage, checkoutMovieErrorMessage);
+                return;
+            case "Return a movie":
+                ArrayList<Movie> moviesNotAvailable = Library.getNotAvailableMovies();
+                String returnMovieIndication = "Select the movie you want to return";
+                String returnMovieSuccessMessage = "Thank you for returning the movie";
+                String returnMovieErrorMessage = "That is not a valid movie to return";
+
+                handleMovieStatus(moviesNotAvailable, returnMovieIndication, returnMovieSuccessMessage, returnMovieErrorMessage);
+                return;
             default:
                 System.out.println("Please select a valid option");
                 return;
@@ -54,7 +74,7 @@ public class Option {
         if (booksToManage.size() > 0) {
             System.out.println(indication);
             Scanner scanner = new Scanner(System.in);
-            chosenBookIndex = scanner.nextInt();
+            int chosenBookIndex = scanner.nextInt();
             for (Book book : booksToManage) {
                 if (booksToManage.indexOf(book) == chosenBookIndex) {
                     bookChosen = book;
@@ -64,6 +84,28 @@ public class Option {
                 bookChosen.toggleIsAvailable();
                 System.out.println(successMessage);
                 bookChosen = null;
+            } else {
+                System.out.println(errorMessage);
+            }
+        }
+    }
+
+    private void handleMovieStatus(ArrayList<Movie> moviesToManage, String indication, String successMessage, String errorMessage){
+        Library.displayMovies(moviesToManage);
+
+        if (moviesToManage.size() > 0) {
+            System.out.println(indication);
+            Scanner scanner = new Scanner(System.in);
+            int chosenMovieIndex = scanner.nextInt();
+            for (Movie movie : moviesToManage) {
+                if (moviesToManage.indexOf(movie) == chosenMovieIndex) {
+                    movieChosen = movie;
+                }
+            }
+            if (movieChosen != null) {
+                movieChosen.toggleIsAvailable();
+                System.out.println(successMessage);
+                movieChosen = null;
             } else {
                 System.out.println(errorMessage);
             }
