@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Option {
 
     private String name;
-    private String chosenBookTitle;
+    private int chosenBookIndex;
     private Book bookChosen;
 
     public Option(String name){
@@ -52,9 +52,9 @@ public class Option {
         Library.displayBooks(booksToManage);
         System.out.println(indication);
         Scanner scanner = new Scanner(System.in);
-        chosenBookTitle = scanner.nextLine().trim();
+        chosenBookIndex = scanner.nextInt();
         for (Book book: booksToManage){
-            if(book.getTitle().equalsIgnoreCase(chosenBookTitle)) {
+            if(booksToManage.indexOf(book) == chosenBookIndex){
                 bookChosen = book;
             }
         }
